@@ -5,7 +5,9 @@ import scalikejdbc._
 import skinny.orm._
 
 object CustomField extends SkinnyMapper[CustomField] {
-  override def defaultAlias: Alias[CustomField] = ???
+  override def defaultAlias: Alias[CustomField] = createAlias("cf")
 
-  override def extract(rs: WrappedResultSet, n: scalikejdbc.ResultName[CustomField]): CustomField = ???
+  override lazy val columns: Seq[String] = autoColumns[CustomField]()
+
+  override def extract(rs: WrappedResultSet, n: scalikejdbc.ResultName[CustomField]): CustomField = autoConstruct(rs, n)
 }

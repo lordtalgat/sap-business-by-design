@@ -1,12 +1,11 @@
 package kz.talgat.dao
 
 import java.time.LocalDate
-import com.criterionhcm.apps.dao.DAO
-import com.criterionhcm.apps.exceptions.AppException
-import com.criterionhcm.helpers.{AdministrativeCategoryCode, BaseMeasureUnitCode, PersonnelEventReasonCode, PersonnelEventTypeCode, WorkAgreementTypeCodes}
-import com.criterionhcm.models.{Employee, EmployeeHiring, EmployeeTermination, JobAssignment, ValidPeriod, WorkplaceAddressInformation}
-import com.criterionhcm.models.companions.{Assignment => AssignmentC, AssignmentDetail => AssignmentDetailC, CodeTableDetail => CodeTableDetailC, Employee => EmployeeC, EmployeeWorkLocation => EmployeeWorkLocationC, Employer => EmployerC, EmployerPosition => EmployerPositionC, EmployerWorkLocation => EmployerWorkLocationC, Person => PersonC, PersonAddress => PersonAddressC, WorkLocation => WorkLocationC, SalaryGrade => SalaryGradeC}
-import com.criterionhcm.util.Constants.CustomFields.SAP_DEFAULT_TEXT
+import kz.talgat.helpers.{AdministrativeCategoryCode, BaseMeasureUnitCode, PersonnelEventReasonCode, PersonnelEventTypeCode, WorkAgreementTypeCodes}
+import kz.talgat.models.{Employee, EmployeeHiring, EmployeeTermination}
+import kz.talgat.companions.{Assignment => AssignmentC, AssignmentDetail => AssignmentDetailC, CodeTableDetail => CodeTableDetailC, Employee => EmployeeC, EmployeeWorkLocation => EmployeeWorkLocationC, Employer => EmployerC, EmployerPosition => EmployerPositionC, EmployerWorkLocation => EmployerWorkLocationC, Person => PersonC, PersonAddress => PersonAddressC, SalaryGrade => SalaryGradeC, WorkLocation => WorkLocationC}
+import kz.talgat.daos.DAO
+import kz.talgat.util.Constants.CustomFields.SAP_DEFAULT_TEXT
 import scalikejdbc._
 
 import scala.util.{Failure, Success, Try}
@@ -204,7 +203,7 @@ class EmployeeDaoImpl(protected val dao: DAO)
         personnelEventReasonCode = PersonnelEventReasonCode.valueOfString(terminationCode),
       )
     }.headOption().apply()
-      .getOrElse(throw new AppException(s"Employee($employeeId) could not be found in database"))
+      .getOrElse(throw new RuntimeException(s"Employee($employeeId) could not be found in database"))
   }
 
   override def getEmployeeNumbers(employerId: EmployerId): List[String] = localTxQuery { implicit session =>

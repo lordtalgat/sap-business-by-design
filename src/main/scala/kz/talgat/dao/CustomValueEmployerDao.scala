@@ -1,10 +1,9 @@
 package kz.talgat.dao
 
-import com.criterionhcm.apps.dao.DAO
-import com.criterionhcm.apps.exceptions.AppException
-import com.criterionhcm.models.{Company, CompanyCustomValues}
-import com.criterionhcm.models.companions.{CustomField => CustomFieldC, CustomValueEmployer => CustomValueEmployerC}
-import com.criterionhcm.util.Constants.CustomFields
+import kz.talgat.models.{Company, CompanyCustomValues}
+import kz.talgat.companions.{CustomField => CustomFieldC, CustomValueEmployer => CustomValueEmployerC}
+import kz.talgat.util.Constants.CustomFields
+import kz.talgat.daos.DAO
 import scalikejdbc.{sqls, _}
 
 trait CustomValueEmployerDao {
@@ -31,9 +30,9 @@ class CustomValueEmployerDaoImpl(protected val dao: DAO)
         .where(sqls.eq(cver.entityId, employerId) and sqls.in(cf.code, CustomFields.AllCodes))
     }.map(e => (e.string(cver.resultName.value), e.string(cf.resultName.code))).list().apply()
 
-    val changeStateId = result.find(_._2 == CustomFields.SAP_CHANGE_STATE_ID_CODE).map(_._1).getOrElse(throw new AppException("Change state not set"))
-    val companyID = result.find(_._2 == CustomFields.SAP_COMPANY_ID_CODE).map(_._1).getOrElse(throw new AppException("Company Id not set"))
-    val companyUUID = result.find(_._2 == CustomFields.SAP_COMPANY_UUID_CODE).map(_._1).getOrElse(throw new AppException("Company UUID is not set"))
+    val changeStateId = result.find(_._2 == CustomFields.SAP_CHANGE_STATE_ID_CODE).map(_._1).getOrElse(throw new RuntimeException("Change state not set"))
+    val companyID = result.find(_._2 == CustomFields.SAP_COMPANY_ID_CODE).map(_._1).getOrElse(throw new RuntimeException("Company Id not set"))
+    val companyUUID = result.find(_._2 == CustomFields.SAP_COMPANY_UUID_CODE).map(_._1).getOrElse(throw new RuntimeException("Company UUID is not set"))
 
     CompanyCustomValues(employerId = employerId, companyID = companyID, companyUUID = companyUUID, changeStateId = changeStateId)
   }

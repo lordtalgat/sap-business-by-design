@@ -1,6 +1,6 @@
 package kz.talgat.dao
 
-import com.criterionhcm.models.companions.{CustomField => CustomFieldC}
+import kz.talgat.companions.{CustomField => CustomFieldC}
 import kz.talgat.daos.DAO
 import scalikejdbc.{sqls, _}
 

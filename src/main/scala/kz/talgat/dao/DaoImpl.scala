@@ -3,8 +3,7 @@ package kz.talgat.dao
 import java.sql
 import java.sql.Connection
 
-import com.criterionhcm.apps.dao.DAO
-import com.criterionhcm.apps.exceptions.AppException
+import kz.talgat.daos.DAO
 import com.typesafe.scalalogging.StrictLogging
 import scalikejdbc.{DB, DBSession}
 
@@ -13,7 +12,7 @@ import cats.syntax.either._
 trait DaoImpl extends StrictLogging {
 
   def localTxQuery[T](f: DBSession => T): T = {
-    var result: Either[Throwable, T] = new AppException("Unexpected exception running query").asLeft
+    var result: Either[Throwable, T] = new RuntimeException("Unexpected exception running query").asLeft
 
     dao.withConnection(
       (conn: sql.Connection) => {
