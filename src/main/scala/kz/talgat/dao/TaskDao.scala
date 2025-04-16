@@ -1,8 +1,8 @@
 package kz.talgat.dao
 
-import com.criterionhcm.apps.dao.DAO
-import com.criterionhcm.models.Task
-import com.criterionhcm.models.companions.{EmployerTask => EmployerTaskC, Project => ProjectC, ProjectTask => ProjectTaskC}
+import kz.talgat.daos.DAO
+import kz.talgat.models.Task
+import kz.talgat.companions.{EmployerTask => EmployerTaskC, Project => ProjectC, ProjectTask => ProjectTaskC}
 import scalikejdbc.{sqls, _}
 
 trait TaskDao {

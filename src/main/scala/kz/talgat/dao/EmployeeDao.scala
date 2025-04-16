@@ -1,9 +1,9 @@
 package kz.talgat.dao
 
 import java.time.LocalDate
-import kz.talgat.helpers.{AdministrativeCategoryCode, BaseMeasureUnitCode, PersonnelEventReasonCode, PersonnelEventTypeCode, WorkAgreementTypeCodes}
+import kz.talgat.helpers._
 import kz.talgat.models.{Employee, EmployeeHiring, EmployeeTermination}
-import kz.talgat.companions.{Assignment => AssignmentC, AssignmentDetail => AssignmentDetailC, CodeTableDetail => CodeTableDetailC, Employee => EmployeeC, EmployeeWorkLocation => EmployeeWorkLocationC, Employer => EmployerC, EmployerPosition => EmployerPositionC, EmployerWorkLocation => EmployerWorkLocationC, Person => PersonC, PersonAddress => PersonAddressC, SalaryGrade => SalaryGradeC, WorkLocation => WorkLocationC}
+import kz.talgat.companions.{Assignment => AssignmentC, AssignmentDetail => AssignmentDetailC, CodeTableDetail => CodeTableDetailC, Employee => EmployeeC, EmployerPosition => EmployerPositionC, Person => PersonC, PersonAddress => PersonAddressC, SalaryGrade => SalaryGradeC}
 import kz.talgat.daos.DAO
 import kz.talgat.util.Constants.CustomFields.SAP_DEFAULT_TEXT
 import scalikejdbc._
@@ -124,7 +124,7 @@ class EmployeeDaoImpl(protected val dao: DAO)
             sqls.eq(ast.isPrimary, true) and
             (sqls.le(ad.effectiveDate, LocalDate.now) and
               (sqls.isNull(ad.expirationDate) or sqls.ge(ad.expirationDate, LocalDate.now)))
-          and sqls.eq(ee.employerId, employerId)
+            and sqls.eq(ee.employerId, employerId)
         )
     }.map { e =>
       val employeeNumber = e.string(ee.resultName.employeeNumber)
@@ -226,7 +226,7 @@ class EmployeeDaoImpl(protected val dao: DAO)
         .where(sqls.isNull(ee.terminationDate)
           and employerFilter
         )
-    }.map{ e =>
+    }.map { e =>
       val id = e.int(ee.resultName.id)
       val numbeer = e.string(ee.resultName.employeeNumber)
       (id, numbeer)

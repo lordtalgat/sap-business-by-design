@@ -12,4 +12,5 @@ case class Employee(uuid: String,
                     workplaceAddressInformation: Option[WorkplaceAddressInformation],
                     jobAssignment: Option[List[JobAssignment]],
                     costCenter: Option[CostCenter],
-                    hireDate: Option[LocalDate])
+                    hireDate: Option[LocalDate],
+                    employeeNumber: String)

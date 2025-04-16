@@ -1,6 +1,6 @@
 package kz.talgat.models
 
-import com.criterionhcm.helpers.{PersonnelEventReasonCode, PersonnelEventTypeCode}
+import kz.talgat.helpers.{PersonnelEventReasonCode, PersonnelEventTypeCode}
 
 import java.time.LocalDate
 

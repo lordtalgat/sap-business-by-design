@@ -1,0 +1,21 @@
+package kz.talgat.models
+
+case class PersonAddress(id: Int,
+                         personId: Int,
+                         addressLocationCd: Int,
+                         countryCd: Int,
+                         geocode: Option[String],
+                         schdist: Option[String],
+                         schdistName: Option[String],
+                         address1: String,
+                         address2: Option[String],
+                         city: String,
+                         stateCd: Option[Int],
+                         postalCode: String,
+                         isMailingAddress: Boolean,
+                         isPrimary: Boolean,
+                         county: Option[String],
+                         workflowLogId: Option[Int],
+                         statusCd: Int,
+                         signatureId: Option[Int],
+                         psdCode: Option[String])
