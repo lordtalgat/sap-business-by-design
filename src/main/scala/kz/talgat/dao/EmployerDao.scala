@@ -1,8 +1,10 @@
 package kz.talgat.dao
 
 import kz.talgat.daos.DAO
-import kz.talgat.models.{Employer, EmployerEssWidgets, EmployerPayrollSettingConstants, PayrollImport}
-import kz.talgat.companions.{CodeTable => CodeTableC, CodeTableDetail => CodeTableDetailC, CustomField => CustomFieldC, CustomValueEmployer => CustomValueEmployerC, Employer => EmployerC, EmployerEssWidgets => EmployerEssWidgetsC, EmployerNotificationSetting => EmployerNotificationSettingC, EmployerPayrollSetting => EmployerPayrollSettingC, InterfaceSettings => InterfaceSettingsC}
+import kz.talgat.models.{Employer, EmployerEssWidgets, EmployerPayrollSettingConstants}
+import kz.talgat.companions.{CodeTable => CodeTableC, CodeTableDetail => CodeTableDetailC, CustomField => CustomFieldC,
+  CustomValueEmployer => CustomValueEmployerC, Employer => EmployerC, EmployerEssWidgets => EmployerEssWidgetsC,
+  EmployerNotificationSetting => EmployerNotificationSettingC, EmployerPayrollSetting => EmployerPayrollSettingC, InterfaceSettings => InterfaceSettingsC}
 import kz.talgat.util.Constants.CustomFields
 import scalikejdbc.{sqls, _}
 
@@ -113,7 +115,6 @@ class EmployerDaoImpl(protected val dao: DAO)
       insertInto(EmployerPayrollSettingC)
         .namedValues(
           erpsColumn.employerId -> employerId,
-          erpsColumn.importFileFormat -> PayrollImport.DEFAULT_FORMAT.toString(),
           erpsColumn.taxEngineCd -> defaultTaxEngine,
           erpsColumn.formatIncome -> EmployerPayrollSettingConstants.FormatIncome.CODE
         )

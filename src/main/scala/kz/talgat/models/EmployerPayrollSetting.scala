@@ -1,0 +1,20 @@
+package kz.talgat.models
+
+case class EmployerPayrollSetting(id: Int,
+                                  employerId: Int,
+                                  checkProcessingCd: Option[Int],
+                                  achProcessingCd: Option[Int],
+                                  taxFilingCd: Option[Int],
+                                  newHireReportingCd: Option[Int],
+                                  importFileFormat: Option[String],
+                                  attribute1: Option[String],
+                                  attribute2: Option[String],
+                                  employerTypeCd: Option[Int],
+                                  isOverrideTax: Boolean,
+                                  appId: Option[Int],
+                                  taxEngineCd: Int,
+                                  isOverrideRate: Boolean,
+                                  isPieceratePay: Boolean,
+                                  isSplitByWeek: Boolean,
+                                  isWcOnOvertime: Boolean,
+                                  formatIncome: Int)
