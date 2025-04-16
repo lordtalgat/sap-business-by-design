@@ -1,10 +1,10 @@
 package kz.talgat.dao
 
-import com.criterionhcm.apps.dao.DAO
-import com.criterionhcm.models.{Project, Properties}
-import com.criterionhcm.models.companions.{Project => ProjectC}
-import com.criterionhcm.modules.DaoUtil
-import com.criterionhcm.util.Constants.CustomFields.PROJECT_LIFE_CYCLE_STATUS_CODE
+import kz.talgat.daos.DAO
+import kz.talgat.models.{Project, Properties}
+import kz.talgat.companions.{Project => ProjectC}
+import kz.talgat.modules.DaoUtil
+import kz.talgat.util.Constants.CustomFields.PROJECT_LIFE_CYCLE_STATUS_CODE
 import scalikejdbc.{sqls, _}
 
 import java.time.LocalDateTime

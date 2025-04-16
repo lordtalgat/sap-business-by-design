@@ -1,9 +1,9 @@
 package kz.talgat.dao
 
-import com.criterionhcm.apps.dao.DAO
-import com.criterionhcm.db.models.{Employer, EmployerEssWidgets, EmployerPayrollSettingConstants, PayrollImport}
-import com.criterionhcm.models.companions.{CodeTable => CodeTableC, CodeTableDetail => CodeTableDetailC, CustomField => CustomFieldC, CustomValueEmployer => CustomValueEmployerC, Employer => EmployerC, EmployerEssWidgets => EmployerEssWidgetsC, EmployerNotificationSetting => EmployerNotificationSettingC, EmployerPayrollSetting => EmployerPayrollSettingC, InterfaceSettings => InterfaceSettingsC}
-import com.criterionhcm.util.Constants.CustomFields
+import kz.talgat.daos.DAO
+import kz.talgat.models.{Employer, EmployerEssWidgets, EmployerPayrollSettingConstants, PayrollImport}
+import kz.talgat.companions.{CodeTable => CodeTableC, CodeTableDetail => CodeTableDetailC, CustomField => CustomFieldC, CustomValueEmployer => CustomValueEmployerC, Employer => EmployerC, EmployerEssWidgets => EmployerEssWidgetsC, EmployerNotificationSetting => EmployerNotificationSettingC, EmployerPayrollSetting => EmployerPayrollSettingC, InterfaceSettings => InterfaceSettingsC}
+import kz.talgat.util.Constants.CustomFields
 import scalikejdbc.{sqls, _}
 
 trait EmployerDao {

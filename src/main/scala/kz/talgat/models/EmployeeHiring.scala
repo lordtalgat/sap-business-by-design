@@ -1,6 +1,6 @@
 package kz.talgat.models
 
-import com.criterionhcm.helpers.{AdministrativeCategoryCode, BaseMeasureUnitCode, WorkAgreementTypeCodes}
+import kz.talgat.helpers.{AdministrativeCategoryCode, BaseMeasureUnitCode, WorkAgreementTypeCodes}
 
 import java.time.LocalDate
 
