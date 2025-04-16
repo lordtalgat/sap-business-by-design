@@ -2,7 +2,7 @@ package kz.talgat.dao
 
 import kz.talgat.daos.DAO
 import kz.talgat.models.Task
-import kz.talgat.companions.{EmployerTask => EmployerTaskC, Project => ProjectC, ProjectTask => ProjectTaskC}
+import kz.talgat.companions.{ProjectC, EmployerTask => EmployerTaskC, ProjectTask => ProjectTaskC}
 import scalikejdbc.{sqls, _}
 
 trait TaskDao {

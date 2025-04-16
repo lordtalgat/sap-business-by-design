@@ -1,11 +1,10 @@
 package kz.talgat.services
 
-import com.criterionhcm.apps.exceptions.AppException
 import com.criterionhcm.apps.models.AppResult
-import com.criterionhcm.concurrent.AppExecutionContext.ec
-import com.criterionhcm.dao.EmployeeDao
-import com.criterionhcm.models.{EmployeeHiring, EmployeeTermination}
-import com.criterionhcm.result.ResultConverter
+import kz.talgat.concurrent.AppExecutionContext.ec
+import kz.talgat.dao.EmployeeDao
+import kz.talgat.models.{EmployeeHiring, EmployeeTermination}
+import kz.talgat.result.ResultConverter
 import com.fasterxml.jackson.databind.JsonNode
 import com.typesafe.scalalogging.StrictLogging
 import play.api.libs.json.{JsObject, Json}
@@ -55,7 +54,7 @@ class EmployeeSyncServiceImpl(soapVerificationService: SoapVerificationService,
             case Left(employeeReq) =>
               employeeReq.find(_.changeStateId == hireRes.changeStateId)
                 .fold(
-                  throw new AppException("Employee with Fname and Lname couldn't find", Json.obj("err" -> "Employee with Fname and Lname couldn't find"))
+                  throw new RuntimeException("Employee with Fname and Lname couldn't find", Json.obj("err" -> "Employee with Fname and Lname couldn't find"))
                 ) { employeeReq =>
                   employeeDao.updateNumber(employee.employeeId, employeeReq.employeeId.toString)
                   soapVerificationService.queryEmployeeUpdate(technicalId = employee.employeeId,

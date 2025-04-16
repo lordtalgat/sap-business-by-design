@@ -1,7 +1,6 @@
 package kz.talgat.modules
 
-import com.criterionhcm.apps.exceptions.AppException
-import com.criterionhcm.services.{EmployeeSyncService, EmployeeSyncServiceImpl, SoapVerificationServiceImpl, SyncService, SyncServiceImpl}
+import kz.talgat.services.{EmployeeSyncService, EmployeeSyncServiceImpl, SoapVerificationServiceImpl, SyncService, SyncServiceImpl}
 import play.api.libs.ws.WSClient
 
 
@@ -14,7 +13,7 @@ object ServiceUtil {
     if (this.services == null) {
       this.services = new Services(wsClient, daos, ctxUtil)
     } else {
-      throw new AppException("Service can't be initialized twice")
+      throw new RuntimeException("Service can't be initialized twice")
     }
   }
 

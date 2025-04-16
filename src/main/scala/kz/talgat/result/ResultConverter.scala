@@ -1,8 +1,8 @@
 package kz.talgat.result
 
 import cats.syntax.option._
-import com.criterionhcm.apps.models.{AppEmployeeSyncResult, AppResult, AppResultMultipleDetails, AppResultSingleDetails}
-import com.criterionhcm.apps.result.EmployeeResultColumns
+import kz.talgat.models.{AppEmployeeSyncResult, AppResult, AppResultMultipleDetails, AppResultSingleDetails}
+import kz.talgat.apps.result.EmployeeResultColumns
 import com.fasterxml.jackson.databind.JsonNode
 import play.api.libs.json.JsObject
 
