@@ -2,12 +2,11 @@ package kz.talgat.dao
 
 import kz.talgat.daos.DAO
 import kz.talgat.models.{Project, Properties}
-import kz.talgat.companions.{Project => ProjectC}
+import kz.talgat.companions.ProjectC
 import kz.talgat.modules.DaoUtil
 import kz.talgat.util.Constants.CustomFields.PROJECT_LIFE_CYCLE_STATUS_CODE
 import scalikejdbc.{sqls, _}
 
-import java.time.LocalDateTime
 
 
 trait ProjectDao {
