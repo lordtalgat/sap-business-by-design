@@ -1,8 +1,7 @@
 package kz.talgat.modules
 
-import com.criterionhcm.apps.dao.DAO
-import com.criterionhcm.apps.exceptions.AppException
-import com.criterionhcm.dao._
+import kz.talgat.daos.DAO
+import kz.talgat.dao._
 
 object DaoUtil {
   private var daos: Daos = _
@@ -11,7 +10,7 @@ object DaoUtil {
     if (this.daos == null) {
       this.daos = new Daos(dao)
     } else {
-      throw new AppException("Daos can't be initialized twice")
+      throw new RuntimeException("Daos can't be initialized twice")
     }
   }
 

@@ -1,9 +1,7 @@
 package kz.talgat.helpers
 
-import com.criterionhcm.apps.exceptions.AppException
-
 import java.time.{LocalDate, LocalDateTime, ZoneId}
-import java.time.format.{DateTimeFormatter, FormatStyle}
+import java.time.format.{DateTimeFormatter}
 import scala.util.Try
 
 object DateFormatHelper {
@@ -15,7 +13,7 @@ object DateFormatHelper {
     Try {
       LocalDate.parse(dateStr, defaultDateFormatter)
     }.getOrElse {
-      throw new AppException(s"Invalid date time value '$dateStr' for '$fieldName' node. Date time format should be '$defaultDateFormatter'")
+      throw new RuntimeException(s"Invalid date time value '$dateStr' for '$fieldName' node. Date time format should be '$defaultDateFormatter'")
     }
   }
 
@@ -23,7 +21,7 @@ object DateFormatHelper {
     Try {
       LocalDateTime.parse(dateStr, defaultDateTimeFormatter)
     }.getOrElse {
-      throw new AppException(s"Invalid date time value '$dateStr' for '$fieldName' node. Date time format should be '$defaultDateTimeFormatter'")
+      throw new RuntimeException(s"Invalid date time value '$dateStr' for '$fieldName' node. Date time format should be '$defaultDateTimeFormatter'")
     }
   }
 
@@ -31,7 +29,7 @@ object DateFormatHelper {
     Try {
       date.format(DateTimeFormatter.ISO_DATE_TIME)
     }.getOrElse {
-      throw new AppException(s"Invalid date time value 'LocalDateTime'. Filter was '$filter'")
+      throw new RuntimeException(s"Invalid date time value 'LocalDateTime'. Filter was '$filter'")
     }
   }
 
@@ -39,7 +37,7 @@ object DateFormatHelper {
     Try {
       date.format(DateTimeFormatter.ISO_LOCAL_DATE)
     }.getOrElse {
-      throw new AppException(s"Invalid date time value 'LocalDateTime'. Filter was '$filter'")
+      throw new RuntimeException(s"Invalid date time value 'LocalDateTime'. Filter was '$filter'")
     }
   }
 }
